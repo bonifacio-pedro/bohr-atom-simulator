@@ -4,7 +4,7 @@ import { protons } from "./nucleus.js";
 import { orbitalSequence } from "./orbitalSequence.js";
 import { updateElementInfo } from "./element.js";
 import { scene } from "../main.js";
-import { getLayerRadius } from "./bohrRadius.js";
+import { getLayerRadius, getReprCurrentRadius } from "./bohrRadius.js";
 
 export let electrosphereLayers = [];
 
@@ -110,7 +110,7 @@ export function createElectrosphere() {
     orbitRotationY: orbit.rotation.y,
   });
 
-  electrosphereRadius += 0.5;
+  document.getElementById("atom-radius").innerHTML = getReprCurrentRadius(electrosphereRadius, electrosphereLayers.length);
 }
 
 function buildElectronMesh(maxElectrons, lastLayer) {

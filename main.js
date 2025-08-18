@@ -79,7 +79,12 @@ function animate() {
   electrosphereLayers.forEach((layer, i) => {
     const layerSpeed = getActualLayerSpeed(i + 1);
 
-    layer.orbit.rotation.z += layerSpeed;
+    
+    if (i % 2 == 0){
+      layer.orbit.rotation.z -= layerSpeed;
+    } else {
+      layer.orbit.rotation.z += layerSpeed;
+    }
 
     layer.electrons.forEach((e) => {
       let angle = layer.orbit.rotation.z + e.phase;
