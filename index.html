@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BOHR ATOM SIMULATOR</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #121212;
+        color: #fff;
+      }
+
+      #element-info {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 15px 25px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 20;
+      }
+
+      #element-symbol {
+        font-size: 3.5em;
+        font-weight: bold;
+        color: #00ffff;
+        margin-bottom: 5px;
+      }
+
+      #element-details {
+        font-size: 0.9em;
+        opacity: 0.8;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      #info-panel {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        z-index: 10;
+      }
+
+      #info-panel div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #info-panel span.value {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 3px;
+        color: #00ffff;
+      }
+
+      .controls {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .controls button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #1e1e1e;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .controls button:hover {
+        background-color: #00ffff;
+        color: #121212;
+      }
+
+      #footer {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 0.8em;
+        opacity: 0.7;
+        color: #ccc;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="element-info">
+      <div id="element-name">No element</div>
+      <div id="element-symbol">--</div>
+      <div id="element-details">
+        <span id="element-number">Atomic Number: --</span>
+        <span id="element-state" class="value">State: --</span>
+      </div>
+    </div>
+
+    <div id="info-panel">
+      <div>
+        Electrons:
+        <span id="electron-count" class="value">0</span>
+      </div>
+      <div>
+        Protons:
+        <span id="proton-count" class="value">0</span>
+      </div>
+      <div>
+        Neutrons:
+        <span id="neutron-count" class="value">0</span>
+      </div>
+      <div>
+        Electronic distribution:
+        <span id="eletronic-distribution" class="value"></span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="proton">Add Proton</button>
+      <button id="neutron">Add Neutron</button>
+      <button id="electron">Add Electron</button>
+      <button id="electrosphere">Add Electrosphere Layer</button>
+      <button id="resetElectrosphere">Reset Electrosphere</button>
+      <button id="resetNucleus">Reset Nucleus</button>
+    </div>
+
+    <div id="footer">Made by Pedro Bonifácio for studies.</div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
