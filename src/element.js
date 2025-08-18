@@ -8,36 +8,30 @@ export function elementFromElectronicDistribution(distributionString) {
 
   const totalElectrons = matches.map(Number).reduce((a, b) => a + b, 0);
 
-  return totalElectrons - 1;
+  return totalElectrons;
 }
 
 export function updateElementInfo(protonCount, electronCount) {
-  if (protonCount > 0 && protonCount <= elements.length) {
-    document.getElementById("element-symbol").innerText =
-      elements[protonCount - 1].symbol;
-    document.getElementById(
-      "element-number"
-    ).innerText = `Atomic Number: ${protonCount}`;
-    document.getElementById("element-name").innerText =
-      elements[protonCount - 1].name;
+  const elementIndex = protonCount - 1;
 
-    if (electronCount === protonCount) {
-      document.getElementById("element-state").innerText =
-        "State: Neutral atom";
-    } else if (electronCount < protonCount) {
-      const charge = protonCount - electronCount;
-      document.getElementById(
-        "element-state"
-      ).innerText = `State: Cation (${charge}⁺)`;
+  if (elementIndex >= 0 && elementIndex < elements.length) {
+    const el = elements[elementIndex];
+
+    document.getElementById("element-symbol").innerText = el.symbol;
+    document.getElementById("element-number").innerText = `Atomic Number: ${protonCount}`;
+    document.getElementById("element-name").innerText = el.name;
+
+    const charge = electronCount - protonCount;
+    if (charge === 0) {
+      document.getElementById("element-state").innerText = "State: Neutral atom";
+    } else if (charge > 0) {
+      document.getElementById("element-state").innerText = `State: Anion (${charge}⁻)`;
     } else {
-      const charge = electronCount - protonCount;
-      document.getElementById(
-        "element-state"
-      ).innerText = `State: Anion (${charge}⁻)`;
+      document.getElementById("element-state").innerText = `State: Cation (${-charge}⁺)`;
     }
   } else {
-    document.getElementById("element-symbol").innerHTML = "--";
-    document.getElementById("element-number").innerText = `Atomic Number: --`;
+    document.getElementById("element-symbol").innerText = "--";
+    document.getElementById("element-number").innerText = "Atomic Number: --";
     document.getElementById("element-name").innerText = "No element";
     document.getElementById("element-state").innerText = "State: --";
   }
