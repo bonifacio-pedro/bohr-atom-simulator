@@ -16,7 +16,7 @@ function refreshElementState() {
 }
 
 export function createProton() {
-  const geometry = new THREE.SphereGeometry(0.2, 32, 64);
+  const geometry = new THREE.SphereGeometry(0.15, 32, 64);
   const material = new THREE.MeshStandardMaterial({
     color: 0xff3939,
     metalness: 0.7,
@@ -24,9 +24,9 @@ export function createProton() {
   });
   const proton = new THREE.Mesh(geometry, material);
 
-  proton.position.x = randomInRange(-0.2, 0.2);
-  proton.position.y = randomInRange(-0.2, 0.2);
-  proton.position.z = randomInRange(-0.2, 0.2);
+  proton.position.x = randomInRange(-0.1, 0.1);
+  proton.position.y = randomInRange(-0.1, 0.1);
+  proton.position.z = randomInRange(-0.1, 0.1);
 
   protons.push(proton);
   scene.add(proton);
@@ -36,7 +36,7 @@ export function createProton() {
 }
 
 export function createNeutron() {
-  const geometry = new THREE.SphereGeometry(0.2, 32, 64);
+  const geometry = new THREE.SphereGeometry(0.15, 32, 64);
   const material = new THREE.MeshStandardMaterial({
     color: 0xb6d7a8,
     metalness: 0.7,
@@ -44,9 +44,9 @@ export function createNeutron() {
   });
   const neutron = new THREE.Mesh(geometry, material);
 
-  neutron.position.x = randomInRange(-0.2, 0.2);
-  neutron.position.y = randomInRange(-0.2, 0.2);
-  neutron.position.z = randomInRange(-0.2, 0.2);
+  neutron.position.x = randomInRange(-0.1, 0.1);
+  neutron.position.y = randomInRange(-0.1, 0.1);
+  neutron.position.z = randomInRange(-0.1, 0.1);
 
   neutrons.push(neutron);
   scene.add(neutron);

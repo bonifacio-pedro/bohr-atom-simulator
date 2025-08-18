@@ -156,6 +156,20 @@ CONTROLS
 }
 
 /*
+SIMULATION SCALE NOTE
+*/
+#simulation-note {
+  position: absolute;
+  bottom: 30px; 
+  left: 10px;
+  font-size: 0.7em;
+  color: #888; 
+  max-width: 300px; 
+  line-height: 1.2em;
+  z-index: 5;
+}
+
+/*
 FOOTER
 */
 #footer {

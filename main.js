@@ -17,6 +17,7 @@ import { createLights } from "./src/lights.js";
 import { vibrateParticle } from "./src/utils.js";
 import { firstVisit } from "./src/firstScreen.js";
 import { createStars } from "./src/stars.js";
+import { getActualLayerSpeed } from "./src/bohrElectronSpeed.js";
 
 window.addEventListener("load", () => {
   document.getElementById("loading-overlay").remove();
@@ -69,20 +70,25 @@ document
   .getElementById("resetNucleus")
   .addEventListener("click", () => resetNucleus());
 
-createStars(1500); 
+createStars(1500);
 
 function animate() {
   protons.forEach((p) => vibrateParticle(p, 0.002));
   neutrons.forEach((n) => vibrateParticle(n, 0.002));
 
-  electrosphereLayers.forEach((layer) => {
-    layer.orbit.rotation.z += 0.01;
+  electrosphereLayers.forEach((layer, i) => {
+    const layerSpeed = getActualLayerSpeed(i + 1);
+
+    layer.orbit.rotation.z += layerSpeed;
+
     layer.electrons.forEach((e) => {
-      e.position.x = layer.radius * Math.cos(0.2 + e.phase);
-      e.position.y = layer.radius * Math.sin(0.2 + e.phase);
+      let angle = layer.orbit.rotation.z + e.phase;
+
+      e.position.x = layer.radius * Math.cos(angle);
+      e.position.y = layer.radius * Math.sin(angle);
+      e.position.z = 0;
     });
   });
-
   controls.update();
   renderer.render(scene, camera);
 }

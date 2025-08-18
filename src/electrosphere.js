@@ -4,9 +4,9 @@ import { protons } from "./nucleus.js";
 import { orbitalSequence } from "./orbitalSequence.js";
 import { updateElementInfo } from "./element.js";
 import { scene } from "../main.js";
+import { getLayerRadius } from "./bohrRadius.js";
 
 export let electrosphereLayers = [];
-export let electrosphereRadius = 1;
 
 function getElectronicDistribution(electrons) {
   const result = [];
@@ -77,6 +77,8 @@ export function createElectrosphere() {
     return;
   }
 
+  let electrosphereRadius = getLayerRadius(electrosphereLayers.length + 1);
+
   const curve = new THREE.EllipseCurve(
     0,
     0,
@@ -92,8 +94,11 @@ export function createElectrosphere() {
   const material = new THREE.LineBasicMaterial({ color: 0xd8d8d8 });
   const orbit = new THREE.Line(geometry, material);
 
-  orbit.rotation.x = (Math.random() * Math.PI) / 2;
-  orbit.rotation.y = (Math.random() * Math.PI) / 2;
+  const maxRotation = 1;
+  const minRotation = 0.50;
+
+  orbit.rotation.x = minRotation + Math.random() * (maxRotation - minRotation);
+  orbit.rotation.y = minRotation + Math.random() * (maxRotation - minRotation);
 
   scene.add(orbit);
 

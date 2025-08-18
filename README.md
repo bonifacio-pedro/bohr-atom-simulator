@@ -10,6 +10,12 @@ The project is under development and still being optimized. Some areas may be he
 You can test it [here](https://gleaming-belekoy-b07107.netlify.app/):  
 [![Bohr Atom Simulator](example.png)](https://gleaming-belekoy-b07107.netlify.app/)
 
+### About scales
+* Electrosphere layer radii and rotation speed are scaled for visualization
+* Real Bohr radius is ~0.0529 nm -> K-shell radius multiplied by 10, other layers ×5
+* Real rotation speed ~10⁶ m/s, scaled down by 10⁻⁸ for animation
+* Proportions between layers and velocities are preserved
+
 ### Features
 * Interactive 3D visualization of Bohr Atomic Model
 * Shows electron configuration for elements
@@ -19,7 +25,6 @@ You can test it [here](https://gleaming-belekoy-b07107.netlify.app/):
 
 ### TODO
 * Most accurate Element representation with isotope (neutron count)
-* Most accurate orbit radius
 * Remove buttons
 * Mass number in element view
 * Eltronical Stability indicator
