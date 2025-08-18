@@ -180,7 +180,6 @@ export function resetElectrosphere() {
   });
 
   electrosphereLayers = [];
-  electrosphereRadius = 1;
 
   document.getElementById("element-symbol").innerHTML = "--";
   document.getElementById("element-number").innerText = "Atomic Number: --";
