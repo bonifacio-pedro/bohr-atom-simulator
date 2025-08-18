@@ -1,4 +1,4 @@
-import { elementNames, periodicTable } from "./elementsRepr";
+import { elements } from "./elementsRepr";
 
 export function elementFromElectronicDistribution(distributionString) {
   const cleaned = distributionString.replace(/<[^>]+>/g, "");
@@ -12,14 +12,14 @@ export function elementFromElectronicDistribution(distributionString) {
 }
 
 export function updateElementInfo(protonCount, electronCount) {
-  if (protonCount > 0 && protonCount <= periodicTable.length) {
+  if (protonCount > 0 && protonCount <= elements.length) {
     document.getElementById("element-symbol").innerText =
-      periodicTable[protonCount - 1];
+      elements[protonCount - 1].symbol;
     document.getElementById(
       "element-number"
     ).innerText = `Atomic Number: ${protonCount}`;
     document.getElementById("element-name").innerText =
-      elementNames[protonCount - 1];
+      elements[protonCount - 1].name;
 
     if (electronCount === protonCount) {
       document.getElementById("element-state").innerText =

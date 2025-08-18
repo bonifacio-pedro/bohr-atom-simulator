@@ -16,42 +16,43 @@ import {
 import { createLights } from "./src/lights.js";
 import { vibrateParticle } from "./src/utils.js";
 
-const scene = new THREE.Scene();
+export const scene = new THREE.Scene();
+
 const renderer = new THREE.WebGLRenderer();
 const camera = new THREE.PerspectiveCamera(
   75,
-  window.innerWidth / window.innerHeight,
+  innerWidth / innerHeight,
   0.1,
   1000
 );
 
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.z = 5;
 controls.update();
 
-createLights(scene);
+createLights();
 
 document
   .getElementById("proton")
-  .addEventListener("click", () => createProton(scene));
+  .addEventListener("click", () => createProton());
 document
   .getElementById("neutron")
-  .addEventListener("click", () => createNeutron(scene));
+  .addEventListener("click", () => createNeutron());
 document
   .getElementById("electrosphere")
-  .addEventListener("click", () => createElectrosphere(scene));
+  .addEventListener("click", () => createElectrosphere());
 document
   .getElementById("electron")
-  .addEventListener("click", () => createElectron(scene));
+  .addEventListener("click", () => createElectron());
 document
   .getElementById("resetElectrosphere")
-  .addEventListener("click", () => resetElectrosphere(scene));
+  .addEventListener("click", () => resetElectrosphere());
 document
   .getElementById("resetNucleus")
-  .addEventListener("click", () => resetNucleus(scene));
+  .addEventListener("click", () => resetNucleus());
 
 function animate() {
   protons.forEach((p) => vibrateParticle(p, 0.002));

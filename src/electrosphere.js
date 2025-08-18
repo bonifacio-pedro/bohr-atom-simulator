@@ -3,6 +3,7 @@ import { updateCounts } from "./utils.js";
 import { protons } from "./nucleus.js";
 import { orbitalSequence } from "./orbitalSequence.js";
 import { updateElementInfo } from "./element.js";
+import { scene } from "../main.js";
 
 export let electrosphereLayers = [];
 export let electrosphereRadius = 1;
@@ -53,13 +54,13 @@ function getMaxElectronsInLastLayer() {
   return getMaxElectronsInLayer(azimutalPossibilities);
 }
 
-export function createElectrosphere(scene) {
+export function createElectrosphere() {
   if (protons.length === 0) {
-    window.alert("You need at least one proton");
+    alert("You need at least one proton");
     return;
   }
   if (electrosphereLayers.length > 6) {
-    window.alert("You can't create more than 7 layers");
+    alert("You can't create more than 7 layers");
     return;
   }
 
@@ -70,7 +71,7 @@ export function createElectrosphere(scene) {
     electrosphereLayers.length > 0 &&
     lastLayer.electrons.length < maxElectrons
   ) {
-    window.alert(
+    alert(
       "You need to fill all possible electrons of the current layer to create another one!"
     );
     return;
@@ -143,17 +144,17 @@ function updateAfterElectronAdded() {
   updateElementInfo(protonCount, electronCount);
 }
 
-export function createElectron(scene) {
+export function createElectron() {
   const lastLayer = electrosphereLayers[electrosphereLayers.length - 1];
   if (!lastLayer) {
-    window.alert("You need to create an Electrosphere Layer first!");
+    alert("You need to create an Electrosphere Layer first!");
     return;
   }
 
   const maxElectrons = getMaxElectronsInLastLayer();
   if (lastLayer.electrons.length >= maxElectrons) {
-    createElectrosphere(scene);
-    createElectron(scene);
+    createElectrosphere();
+    createElectron();
     return;
   }
 
@@ -163,7 +164,7 @@ export function createElectron(scene) {
   updateAfterElectronAdded();
 }
 
-export function resetElectrosphere(scene) {
+export function resetElectrosphere() {
   document.getElementById("eletronic-distribution").innerHTML = "";
 
   electrosphereLayers.forEach((layer) => {
