@@ -17,6 +17,15 @@ You can test it [here](https://gleaming-belekoy-b07107.netlify.app/):
 * Works with custom proton counts
 * "Lightweight" (hehe) and educational tool for chemistry study
 
+### TODO
+* Most accurate Element representation with isotope (neutron count)
+* Most accurate orbit radius
+* Remove buttons
+* Mass number in element view
+* Eltronical Stability indicator
+* Export Atom and Element view in .pdf or .png
+* Quantum representation (probabilistic cloud) (fully experimental)
+
 ### Contributing
 I’m open to any suggestions for optimization, performance improvements, or new features. Feel free to:
 * Fork the repository
