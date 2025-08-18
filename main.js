@@ -15,6 +15,18 @@ import {
 } from "./src/electrosphere.js";
 import { createLights } from "./src/lights.js";
 import { vibrateParticle } from "./src/utils.js";
+import { firstVisit } from "./src/firstScreen.js";
+import { createStars } from "./src/stars.js";
+
+window.addEventListener("load", () => {
+  document.getElementById("loading-overlay").remove();
+});
+
+if (!localStorage.getItem("hasVisited")) {
+  document.getElementById("welcome-overlay").style.display = "flex";
+} else {
+  document.getElementById("welcome-overlay").style.display = "none";
+}
 
 export const scene = new THREE.Scene();
 
@@ -36,6 +48,9 @@ controls.update();
 createLights();
 
 document
+  .getElementById("start-btn")
+  .addEventListener("click", () => firstVisit());
+document
   .getElementById("proton")
   .addEventListener("click", () => createProton());
 document
@@ -53,6 +68,8 @@ document
 document
   .getElementById("resetNucleus")
   .addEventListener("click", () => resetNucleus());
+
+createStars(1500); 
 
 function animate() {
   protons.forEach((p) => vibrateParticle(p, 0.002));
