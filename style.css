@@ -94,6 +94,18 @@ ELEMENT INFO
   gap: 3px;
 }
 
+#element-info-inside {
+  display: flex;
+  align-items: center;
+}
+
+#element-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.1cm;
+}
+
 /*
 INFO PANEL
 */

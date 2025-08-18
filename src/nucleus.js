@@ -8,11 +8,12 @@ export var neutrons = [];
 
 function refreshElementState() {
   const protonCount = protons.length;
+  const neutronCount = neutrons.length;
   const electronCount = electrosphereLayers.reduce(
     (acc, layer) => acc + layer.electrons.length,
     0
   );
-  updateElementInfo(protonCount, electronCount);
+  updateElementInfo(protonCount, electronCount, neutronCount);
 }
 
 export function createProton() {

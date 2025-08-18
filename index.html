@@ -10,7 +10,13 @@
 
     <div id="element-info">
       <div id="element-name">No element</div>
-      <div id="element-symbol">--</div>
+      <div id="element-info-inside">
+        <div ID="element-data">
+          <div id="element-z">Z</div>
+          <div id="element-a">A</div>
+        </div>
+        <div id="element-symbol">--</div>
+      </div>
       <div id="element-details">
         <span id="element-number">Atomic Number: --</span>
         <span id="element-state" class="value">State: --</span>
@@ -32,11 +38,15 @@
       </div>
       <div>
         Electronic distribution:
-        <span id="eletronic-distribution" class="value"></span>
+        <span id="eletronic-distribution" class="value">--</span>
       </div>
       <div>
         Current Atom Radius:
-        <span id="atom-radius" class="value"></span>
+        <span id="atom-radius" class="value">--</span>
+      </div>
+      <div>
+        Electronically stable
+        <span id="e-stable" class="value">--</span>
       </div>
     </div>
 
@@ -51,9 +61,9 @@
 
     <p id="simulation-note">
       Note: Electrosphere layers radii and rotation speed are scaled for
-      visualization. Real radius ~0.0529 nm (Bohr Radius) and speed ~10⁶ m/s cannot be
-      animated directly. K-shell radius is multiplied by 10; other layers use
-      factor 5. Speed is reduced by 10⁻⁸.
+      visualization. Real radius ~0.0529 nm (Bohr Radius) and speed ~10⁶ m/s
+      cannot be animated directly. K-shell radius is multiplied by 10; other
+      layers use factor 5. Speed is reduced by 10⁻⁸.
     </p>
     <div id="footer">Made by Pedro Bonifácio for studies.</div>
     <script type="module" src="/main.js"></script>

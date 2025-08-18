@@ -26,8 +26,6 @@ You can test it [here](https://gleaming-belekoy-b07107.netlify.app/):
 ### TODO
 * Most accurate Element representation with isotope (neutron count)
 * Remove buttons
-* Mass number in element view
-* Eltronical Stability indicator
 * Export Atom and Element view in .pdf or .png
 * Quantum representation (probabilistic cloud) (fully experimental)
 

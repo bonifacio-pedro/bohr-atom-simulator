@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { updateCounts } from "./utils.js";
-import { protons } from "./nucleus.js";
+import { neutrons, protons } from "./nucleus.js";
 import { orbitalSequence } from "./orbitalSequence.js";
 import { updateElementInfo } from "./element.js";
 import { scene } from "../main.js";
@@ -137,6 +137,7 @@ function updateAfterElectronAdded() {
   updateCounts();
 
   const protonCount = protons.length;
+  const neutronCount = neutrons.length;
   const electronCount = electrosphereLayers.reduce(
     (acc, layer) => acc + layer.electrons.length,
     0
@@ -146,7 +147,7 @@ function updateAfterElectronAdded() {
   document.getElementById("eletronic-distribution").innerHTML =
     eletronicalDistribution;
 
-  updateElementInfo(protonCount, electronCount);
+  updateElementInfo(protonCount, electronCount, neutronCount);
 }
 
 export function createElectron() {
