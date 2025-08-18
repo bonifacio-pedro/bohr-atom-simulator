@@ -7,7 +7,8 @@ KOTZ, John C.; TREICHEL, Paul; WEAVER, Gabriela C. General Chemistry and Chemica
 
 The project is under development and still being optimized. Some areas may be heavy due to multiple iterations, and feedback or suggestions are very welcome!
 
-![alt text](<example.png>)
+You can test it [here](https://gleaming-belekoy-b07107.netlify.app/):  
+[![Bohr Atom Simulator](example.png)](https://gleaming-belekoy-b07107.netlify.app/)
 
 ### Features
 * Interactive 3D visualization of Bohr Atomic Model
