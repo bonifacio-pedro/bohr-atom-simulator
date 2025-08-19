@@ -1,6 +1,8 @@
 import { electrosphereLayers } from "./electrosphere";
 import { elements } from "./elementsRepr";
 
+export let actualRepr = {};
+
 export function elementFromElectronicDistribution(distributionString) {
   const cleaned = distributionString.replace(/<[^>]+>/g, "");
 
@@ -30,11 +32,10 @@ export function updateElementInfo(protonCount, electronCount, neutronCount) {
     let color = "#66ff00ff";
     if (!isStable(protonCount)) {
       stableText = "INSTABLE";
-      color = "#FF0000"
+      color = "#FF0000";
     }
     document.getElementById("e-stable").innerText = stableText;
     document.getElementById("e-stable").style.color = color;
-
 
     const charge = electronCount - protonCount;
     if (charge === 0) {
@@ -49,6 +50,13 @@ export function updateElementInfo(protonCount, electronCount, neutronCount) {
         "element-state"
       ).innerText = `State: Cation (${-charge}⁺)`;
     }
+
+    actualRepr = {
+      name: el.name,
+      symbol: el.symbol,
+      distribution: document.getElementById("eletronic-distribution").innerText,
+      radius: document.getElementById("atom-radius").innerText,
+    };
   } else {
     document.getElementById("element-symbol").innerText = "--";
     document.getElementById("element-number").innerText = "Atomic Number: --";
@@ -59,7 +67,11 @@ export function updateElementInfo(protonCount, electronCount, neutronCount) {
 
 function isStable(protonCount) {
   let n = electrosphereLayers.length;
-  let electronCount = electrosphereLayers[n - 1].electrons.length;
+  let electronCount = 0;
+
+  if (n > 0) {
+    electronCount = electrosphereLayers[n - 1].electrons.length;
+  }
 
   // Be (Z=4) e B (Z=5)
   if (protonCount === 4 || protonCount === 5) {
@@ -82,5 +94,5 @@ function isStable(protonCount) {
     }
   }
 
-  return false; 
+  return false;
 }

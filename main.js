@@ -18,6 +18,7 @@ import { vibrateParticle } from "./src/utils.js";
 import { firstVisit } from "./src/firstScreen.js";
 import { createStars } from "./src/stars.js";
 import { getActualLayerSpeed } from "./src/bohrElectronSpeed.js";
+import { exportPng } from "./src/exportPng.js";
 
 window.addEventListener("load", () => {
   document.getElementById("loading-overlay").remove();
@@ -31,7 +32,9 @@ if (!localStorage.getItem("hasVisited")) {
 
 export const scene = new THREE.Scene();
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+  preserveDrawingBuffer: true,
+});
 const camera = new THREE.PerspectiveCamera(
   75,
   innerWidth / innerHeight,
@@ -69,6 +72,9 @@ document
 document
   .getElementById("resetNucleus")
   .addEventListener("click", () => resetNucleus());
+document
+  .getElementById("exportAtom")
+  .addEventListener("click", () => exportPng());
 
 createStars(1500);
 
@@ -79,8 +85,7 @@ function animate() {
   electrosphereLayers.forEach((layer, i) => {
     const layerSpeed = getActualLayerSpeed(i + 1);
 
-    
-    if (i % 2 == 0){
+    if (i % 2 == 0) {
       layer.orbit.rotation.z -= layerSpeed;
     } else {
       layer.orbit.rotation.z += layerSpeed;
